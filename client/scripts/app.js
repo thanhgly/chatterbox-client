@@ -21,6 +21,8 @@ var App = {
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
+    setTimeout(MessagesView.initialize, 1000);
+    setInterval(MessagesView.initialize, 10000);
   },
 
   fetch: function(callback = ()=>{}) {
@@ -34,8 +36,9 @@ var App = {
         // console.log(message);
         Messages.add(message.message_id, message);
       }
-      MessagesView.render();
+      // MessagesView.render();
     });
+    callback();
   },
 
   startSpinner: function() {

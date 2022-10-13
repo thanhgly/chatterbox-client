@@ -19,6 +19,9 @@ var Messages = {
   },
 
   escape: function(text) {
+    if (text === null) {
+      return null;
+    }
     var map = {
       '&': '&amp;',
       '<': '&lt;',

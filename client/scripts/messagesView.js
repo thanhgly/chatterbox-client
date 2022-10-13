@@ -8,13 +8,14 @@ var MessagesView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+    MessagesView.$chats.empty();
+    console.log('emptied');
     MessagesView.render();
   },
 
   render: function() {
     // TODO: Render _all_ the messages.
     for (var messageId in Messages._data) {
-      console.log(Messages._data[messageId]);
       MessagesView.renderMessage(Messages._data[messageId]);
     }
   },
@@ -22,9 +23,7 @@ var MessagesView = {
   renderMessage: function(message) {
     // TODO: Render a single message.
     var msg = MessageView.render({username: message.username, text: message.text, roomname: message.roomname});
-    // debugger;
     MessagesView.$chats.append(msg);
-    console.log(msg);
   },
 
   handleClick: function(event) {
