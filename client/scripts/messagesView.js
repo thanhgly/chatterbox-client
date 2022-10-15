@@ -42,12 +42,8 @@ var MessagesView = {
     //console.log(event.target.attr());
     var username = $(event.target).text();
     Friends.add(username);
-    console.log($(event.target).text());
-    console.log(event.target);
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
-    $('.true').css('font-weight', 'bold');
   }
 
 
