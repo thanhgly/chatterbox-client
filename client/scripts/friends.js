@@ -13,6 +13,10 @@ var Friends = {
     if (!Friends._data.includes(username)) {
       Friends._data.push(username);
     }
+  },
+
+  toggleStatus: function(username) {
+    return Friends._data.includes(username);
   }
 
 };
