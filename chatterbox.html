@@ -24,11 +24,16 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
+      <button id="refresh">Refresh</button>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select></select>
+        <select name="room" id="roomname">
+        </select>
+        <label style="display:none;">Create a new room
+        <input id="newroom"></input>
         <button>Add Room</button>
+        </label>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>

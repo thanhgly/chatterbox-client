@@ -8,15 +8,17 @@ var MessagesView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
-    MessagesView.$chats.empty();
-    console.log('emptied');
-    MessagesView.render();
+
   },
 
-  render: function() {
+  render: function(roomname) {
     // TODO: Render _all_ the messages.
+    MessagesView.$chats.empty();
+
     for (var messageId in Messages._data) {
-      MessagesView.renderMessage(Messages._data[messageId]);
+      if (roomname === undefined || Messages._data[messageId].roomname === roomname) {
+        MessagesView.renderMessage(Messages._data[messageId]);
+      }
     }
   },
 

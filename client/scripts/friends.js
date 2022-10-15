@@ -10,8 +10,8 @@ var Friends = {
   // TODO: Define methods which allow you to add, toggle,
   // and check the friendship status of other users.
   add: function(username) {
-    if (!_data.includes(username)) {
-      Friend._data.push(username);
+    if (!Friends._data.includes(username)) {
+      Friends._data.push(username);
     }
   }
 

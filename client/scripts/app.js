@@ -21,8 +21,11 @@ var App = {
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
-    setTimeout(MessagesView.initialize, 1000);
-    setInterval(MessagesView.initialize, 10000);
+
+    $('#refresh').click(event, function(event) {
+      App.startSpinner();
+      App.fetch(App.stopSpinner);
+    });
   },
 
   fetch: function(callback = ()=>{}) {
@@ -35,8 +38,10 @@ var App = {
       for (var message of data) {
         // console.log(message);
         Messages.add(message.message_id, message);
+        Rooms.add(message.roomname);
       }
-      // MessagesView.render();
+      MessagesView.render();
+      RoomsView.render();
     });
     callback();
   },
@@ -49,5 +54,16 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
-  }
+  },
+
+  update: function() {
+    Parse.readAll((data) => {
+      for (var message of data) {
+        // console.log(message);
+        Messages.add(message.message_id, message);
+        Rooms.add(message.roomname);
+      }
+      MessagesView.render(RoomsView.$select.val());
+    });
+  },
 };

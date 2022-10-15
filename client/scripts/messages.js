@@ -11,6 +11,8 @@ var Messages = {
   // add to, and generally interact with the messages.
   add: function(messageId, message) {
     message.text = Messages.escape(message.text);
+    message.roomname = Messages.escape(message.roomname);
+    message.username = Messages.escape(message.username);
     Messages._data[messageId] = message;
   },
 
